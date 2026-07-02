@@ -206,6 +206,12 @@ const videoStage = document.getElementById('video-stage');
 const introVideo = document.getElementById('intro-video');
 const site = document.getElementById('site');
 
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+introVideo.currentTime = 0;
+
 function typeWriter(el, text, speed, cb) {
   let i = 0;
   const cursor = document.createElement('span');
@@ -247,6 +253,8 @@ function runHeroSequence() {
 
 function launchSite() {
   if (site.classList.contains('visible')) return;
+  
+  window.scrollTo(0, 0);
   
   videoStage.classList.add('fade-out');
   site.classList.add('visible');
